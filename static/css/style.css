@@ -244,7 +244,7 @@ h1, .brand {
     flex-shrink: 0;
 }
 
-.experience {
+.experience, .skills {
     padding: 3rem 0;
 }
 
@@ -268,6 +268,56 @@ h1, .brand {
     border-radius: var(--radius);
     border: 1px solid var(--line);
     flex-shrink: 0;
+}
+
+.skills-title {
+    font-family: "Space Grotesk", -apple-system, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: var(--ink);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1rem; 
+}
+
+.skill-category {
+    background-color: #f5efe6;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    transition: border-color 0.2s ease;
+}
+
+.skill-category:hover {
+    border-color: var(--accent);
+}
+
+.skill-category h3 {
+    font-size: 0.9rem;
+    color: var(--accent-dark);
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.skill-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink);
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.3rem 0.6rem;
 }
 
 @media (max-width: 600px) {
@@ -297,5 +347,11 @@ h1, .brand {
     .education-img {
         width: 100%;
         height: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
     }
 }
