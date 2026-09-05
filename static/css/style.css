@@ -244,7 +244,7 @@ h1, .brand {
     flex-shrink: 0;
 }
 
-.experience, .skills {
+.experience {
     padding: 3rem 0;
 }
 
