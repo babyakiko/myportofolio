@@ -5,12 +5,12 @@
 }
 
 :root {
-    --ink: #1c1917;
-    --paper: #faf6f0;
-    --accent: #d95d39;
-    --accent-dark: #a8442a;
-    --line: #e3d9c9;
-    --text-muted: #6b6459;
+    --ink: #6d1316;
+    --paper: #f9f9f9;
+    --accent: #1a3049;
+    --accent-dark: #1a3049;
+    --line: #6d1316;
+    --text-muted: #5a4422;
     --radius: 4px;
 }
 
@@ -31,6 +31,7 @@ h1, .brand {
     padding: 0 1.5rem;
 }
 
+/* Header & Navigasi */
 .site-header {
     border-bottom: 1px solid var(--line);
 }
@@ -175,180 +176,6 @@ h1, .brand {
     border: 3px solid var(--ink);
 }
 
-.site-footer {
-    padding: 1.5rem;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    border-top: 1px solid var(--line);
-}
-
-.education {
-    padding: 4.5rem 0 5rem;
-    border-top: 1px solid var(--line); 
-}
-
-.education-title, .experience-title {
-    font-family: "Space Grotesk", -apple-system, sans-serif;
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color: var(--ink);
-}
-
-.education-list, .experience-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.education-row, .experience-row {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    background-color: #f5efe6; 
-    padding: 1.25rem 1.5rem;
-    border-radius: var(--radius);
-    border: 1px solid var(--line);
-    transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.education-row:hover, .experience-row:hover {
-    border-color: var(--accent);
-}
-
-.education-row dt, .experience-row dt {
-    color: var(--accent-dark);
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 0.2rem;
-}
-
-.education-row dd, .experience-row dd {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-left: 0;
-}
-
-.education-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.education-img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: var(--radius);
-    border: none; 
-    object-fit: contain;     
-    padding: 0;         
-    background: none;
-    flex-shrink: 0;
-}
-
-.education-date, .experience-date {
-    display: inline-block;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 0.5rem;
-}
-
-.experience, .skills {
-    padding: 3rem 0;
-}
-
-
-.experience-desc {
-    color: var(--ink);
-    font-size: 0.95rem;
-    margin-top: 0.25rem;
-}
-
-.experience-img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: var(--radius);
-    border: 1px solid var(--line);
-    flex-shrink: 0;
-}
-
-.skills-title {
-    font-family: "Space Grotesk", -apple-system, sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1.25rem;
-    color: var(--ink);
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 1rem; 
-}
-
-.skill-category {
-    background-color: #f5efe6;
-    padding: 1rem 1.25rem;
-    border-radius: var(--radius);
-    border: 1px solid var(--line);
-    transition: border-color 0.2s ease;
-}
-
-.skill-category:hover {
-    border-color: var(--accent);
-}
-
-.skill-category h3 {
-    font-size: 0.9rem;
-    color: var(--accent-dark);
-    margin-bottom: 0.6rem;
-    font-weight: 700;
-}
-
-.skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-}
-
-.skill-tag {
-    display: inline-block;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--ink);
-    background-color: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 0.3rem 0.6rem;
-}
-
-@media (max-width: 600px) {
-    .hero-grid {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "identity"
-            "photo"
-            "details";
-    }
-
-    .hero-photo {
-        max-width: 220px;
-    }
-
-    .social-links {
-        justify-content: flex-start;
-    }
-}
-
-@media (max-width: 768px) {
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 .experience-section {
     padding: 4rem 0;
     border-top: 1px solid var(--line);
@@ -375,7 +202,7 @@ h1, .brand {
 
 .experience-card {
     padding: 1.25rem;
-    background-color: #fff;
+    background-color: var(--paper);
     border: 1px solid var(--line);
     border-radius: var(--radius);
 }
@@ -401,4 +228,30 @@ h1, .brand {
     margin-top: 1rem;
     font-size: 0.85rem;
     font-weight: 600;
+    color: var(--accent-dark);
+}
+
+.site-footer {
+    padding: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--line);
+}
+
+@media (max-width: 600px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "identity"
+            "photo"
+            "details";
+    }
+
+    .hero-photo {
+        max-width: 220px;
+    }
+
+    .social-links {
+        justify-content: flex-start;
+    }
 }
