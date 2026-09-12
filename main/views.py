@@ -9,8 +9,7 @@ def show_main(request):
         "npm": "2506625224",
         "study_program": "S1 Sistem Informasi",
         "bio": (
-            "An Information System student at Universitas Indonesia interested "
-            "in UI/UX"
+            "Second year Information System student at Universitas Indonesia "
         ),
     }
     return render(request, "index.html", context)
