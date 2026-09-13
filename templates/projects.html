@@ -29,29 +29,40 @@
 
                 <div class="experience-grid">
                     {% for project in project_list %}
-                        <article class="experience-card window-card">
-                            <div class="window-header">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                                <span class="window-title">{{ project.role }}</span>
-                            </div>
-                            <div class="window-content">
-                                {% if project.image_url %}
-                                    <div class="project-image-container">
-                                        <img src="{{ project.image_url }}" alt="Preview of {{ project.title }}" class="project-image">
-                                    </div>
-                                {% endif %}
-                                
-                                <h2>{{ project.title }}</h2>
-                                <p class="experience-description">
-                                    {{ project.description }}
-                                </p>
-                                <p class="project-tech">
-                                    <strong>Tools:</strong> {{ project.tech_stack }}
-                                </p>
-                            </div>
-                        </article>
+                        <!-- 1. Tampilan Ikon Folder di Halaman Utama -->
+                        <div class="folder-card" onclick="openModal('modal-{{ project.id }}')">
+                            <svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#3b82f6" width="64" height="64">
+                                <path d="M19.5 21a3 3 0 0 0 3-3v-8a3 3 0 0 0-3-3h-7l-2.6-2.6A2 2 0 0 0 8.48 4H4.5a3 3 0 0 0-3 3v11a3 3 0 0 0 3 3h15z"/>
+                            </svg>
+                            <span class="folder-title">{{ project.title }}</span>
+                        </div>
+
+                        <!-- 2. Modal Popup (Card Jendela yang Muncul Saat Klik) -->
+                        <div id="modal-{{ project.id }}" class="modal-overlay" onclick="closeModalOnOuterClick(event)">
+                            <article class="experience-card window-card modal-content">
+                                <div class="window-header">
+                                    <span class="dot dot-red" onclick="closeModal('modal-{{ project.id }}')" style="cursor: pointer;"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
+                                    <span class="window-title">{{ project.role }}</span>
+                                </div>
+                                <div class="window-content">
+                                    {% if project.image_url %}
+                                        <div class="project-image-container">
+                                            <img src="{{ project.image_url }}" alt="Preview of {{ project.title }}" class="project-image">
+                                        </div>
+                                    {% endif %}
+                                    
+                                    <h2>{{ project.title }}</h2>
+                                    <p class="experience-description">
+                                        {{ project.description }}
+                                    </p>
+                                    <p class="project-tech">
+                                        <strong>Tools:</strong> {{ project.tech_stack }}
+                                    </p>
+                                </div>
+                            </article>
+                        </div>
                     {% empty %}
                         <p class="empty-state">
                             No project has been added yet.
@@ -67,5 +78,22 @@
             <p>&copy; 2026 {{ name }}. Fakultas Ilmu Komputer, Universitas Indonesia.</p>
         </div>
     </footer>
+
+    <!-- Script JavaScript untuk Membuka & Menutup Modal -->
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function closeModalOnOuterClick(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+        }
+    </script>
 </body>
 </html>
