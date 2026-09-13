@@ -28,20 +28,25 @@
 
                 <div class="experience-grid">
                     {% for experience in experience_list %}
-                        <article class="experience-card">
-                            <span class="experience-category">
-                                {{ experience.get_category_display }}
-                            </span>
-                            <h2>{{ experience.title }}</h2>
-                            <p class="experience-description">
-                                {{ experience.description }}
-                            </p>
-
-                            {% if experience.is_ongoing %}
-                                <p class="experience-status">Ongoing</p>
-                            {% else %}
-                                <p class="experience-status">Completed</p>
-                            {% endif %}
+                        <article class="experience-card window-card">
+                            <div class="window-header">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                                <span class="window-title">{{ experience.get_category_display }}</span>
+                            </div>
+                            <div class="window-content">
+                                <h2>{{ experience.title }}</h2>
+                                <p class="experience-description">
+                                    {{ experience.description }}
+                                </p>
+                            
+                                {% if experience.is_ongoing %}
+                                    <p class="experience-status badge-ongoing">Ongoing</p>
+                                {% else %}
+                                    <p class="experience-status badge-completed">Completed</p>
+                                {% endif %}
+                            </div>
                         </article>
                     {% empty %}
                         <p class="empty-state">
