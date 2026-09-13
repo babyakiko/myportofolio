@@ -188,7 +188,6 @@ h1, .brand {
 }
 
 .social-link {
-    display: #111111;
     font-size: 0.85rem;
     font-weight: 600;
     text-decoration: none;
@@ -239,22 +238,11 @@ h1, .brand {
     transform: scale(1.2);
 }
 
-.kaomoji-1 {
-    top: 15%;
-    left: 8%;
-}
+.kaomoji-1 { top: 15%; left: 8%; }
+.kaomoji-2 { top: 75%; left: 3%; }
+.kaomoji-3 { top: 50%; right: 5%; }
 
-.kaomoji-2 {
-    top: 75%;
-    left: 3%;
-}
-
-.kaomoji-3 {
-    top: 50%;
-    right: 5%;
-}
-
-/*  Experience */
+/* Experience */
 .experience-section {
     padding: 4rem 0;
 }
@@ -273,9 +261,11 @@ h1, .brand {
 }
 
 .experience-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0;
 }
 
 .experience-card h2 {
@@ -308,7 +298,7 @@ h1, .brand {
     color: #27c93f;
 }
 
-/*  Projects */
+/* Projects */
 .project-tech {
     margin-top: 0.75rem;
     font-size: 0.85rem;
@@ -328,6 +318,69 @@ h1, .brand {
     border-radius: var(--radius, 8px);
     border: 1px solid var(--line, #e5e7eb);
     background-color: #f9fafb;
+}
+
+/* dekstop folder interaction */
+
+.folder-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 12px;
+    width: 130px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.folder-card:hover {
+    transform: translateY(-3px);
+}
+
+.folder-title {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #1f2937;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 3px 8px;
+    border-radius: 6px;
+    word-break: break-word;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.folder-card:hover .folder-title {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* modal popup & overlay styles */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    max-width: 600px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .site-footer {
@@ -353,5 +406,16 @@ h1, .brand {
 
     .kaomoji {
         display: none;
+    }
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
     }
 }
