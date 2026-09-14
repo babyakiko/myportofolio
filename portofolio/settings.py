@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&7ju-%(&v1vfh_3se8k+&80iq31z$vy(6$k42aaf39-jr&!r+#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "baby-akiko-myportofolio.pws.cs.ui.ac.id"]
 
@@ -151,3 +151,7 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://baby-akiko-myportofolio.pws.cs.ui.ac.id',
+]
