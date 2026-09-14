@@ -152,6 +152,11 @@ MAILERS = {
     },
 }
 
+# Bisa buka django admin pws
+
 CSRF_TRUSTED_ORIGINS = [
     'https://baby-akiko-myportofolio.pws.cs.ui.ac.id',
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
