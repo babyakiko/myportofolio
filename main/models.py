@@ -34,11 +34,10 @@ class Experience(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length=255)
-    description = models.TextField()
     role = models.CharField(max_length=255)
+    description = models.TextField()
     tech_stack = models.CharField(max_length=255)
-    image_url = models.CharField(max_length=500, blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
+    image_url = models.URLField(blank=True, null=True)
+    
     def __str__(self):
         return self.title
