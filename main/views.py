@@ -8,9 +8,9 @@ def show_main(request):
         "name": "Baby Akiko Gracia",
         "npm": "2506625224",
         "study_program": "S1 Sistem Informasi",
-        "bio": (
-            "Second year Information System student at Universitas Indonesia "
-        ),
+        "bio": "Second year Information System student at Universitas Indonesia ",
+        "experience_list": Experience.objects.all(),
+        "project_list": Project.objects.all(),
     }
     return render(request, "index.html", context)
 
