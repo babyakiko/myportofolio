@@ -391,6 +391,154 @@ h1, .brand {
     background: var(--surface);
 }
 
+/* tambahan style untuk header projects & search bar */
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.project-header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+}
+
+.project-add-button span {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-right: 0.35rem;
+}
+
+/* form pencarian proyek */
+.project-search {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    max-width: 100%;
+}
+
+.project-search__input {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-search__input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
+}
+
+/* aksi di dalam card */
+.project-card-actions {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+}
+
+.project-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* projects form & inputs customization */
+.project-form {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ink);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background-color: var(--paper);
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, outline-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
+    background-color: var(--surface);
+}
+
+.form-error {
+    color: #ff5f56; 
+    font-size: 0.85rem;
+    margin-top: 0.35rem;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    border: 0;
+    border-radius: 20px; 
+    padding: 0.6rem 1.25rem;
+    background: var(--accent-blue);
+    color: white;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+.button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.button-secondary {
+    background: var(--line);
+    color: var(--ink);
+}
+
+.button-secondary:hover {
+    background: var(--accent-dark);
+    color: white;
+}
+
+
 @media (max-width: 600px) {
     .hero-grid {
         grid-template-columns: 1fr;

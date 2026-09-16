@@ -1,34 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
+{% block meta %}
     <title>Projects - {{ name }}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    <header class="site-header">
-        <div class="container">
-            <a href="{% url 'main:show_main' %}" class="brand">{{ name }}</a>
-            <nav>
-                <a href="{% url 'main:show_main' %}">Profile</a>
-                <a href="{% url 'main:show_experience' %}">Experience</a>
-                <a href="{% url 'main:show_projects' %}">Projects</a>
-            </nav>
-        </div>
-    </header>
-
+{% endblock meta %}
+{% block content %}
     <main>
         <section class="experience-section" id="projects">
             <div class="container">
                 <p class="section-kicker">Things I've built</p>
-                <h1>Projects</h1>
-                <div class="experience-grid">
+                
+                <!-- Header Projects & Tombol Tambah Proyek -->
+                <div class="project-header">
+                    <h1>Projects</h1>
+                    <a href="{% url 'main:create_project' %}"
+                       class="button project-add-button">
+                        <span aria-hidden="true">+</span>
+                        Add Project
+                    </a>
+                </div>
+
+                <!-- Form Pencarian Proyek -->
+                <form method="get"
+                      action="{% url 'main:show_projects' %}"
+                      class="project-search">
+                    <input type="search"
+                           name="title"
+                           value="{{ title_query }}"
+                           placeholder="Search by project name"
+                           class="project-search__input"
+                           aria-label="Search by project name">
+                    <button type="submit" class="button">Search</button>
+                </form>
+
+                <!-- Grid Proyek -->
+                <div class="experience-grid project-grid">
                     {% for project in project_list %}
-                        <!-- 1. Tampilan Ikon Folder di Halaman Utama -->
+                        <!-- 1. Tampilan Ikon Folder di Halaman Utama (Gaya khas Anda) -->
                         <div class="folder-card" onclick="openModal('modal-{{ project.id }}')">
                             <svg class="folder-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#3b82f6" width="64" height="64">
                                 <path d="M19.5 21a3 3 0 0 0 3-3v-8a3 3 0 0 0-3-3h-7l-2.6-2.6A2 2 0 0 0 8.48 4H4.5a3 3 0 0 0-3 3v11a3 3 0 0 0 3 3h15z"/>
@@ -36,14 +42,16 @@
                             <span class="folder-title">{{ project.title }}</span>
                         </div>
 
-                        <!-- 2. Modal Popup (Card Jendela yang Muncul Saat Klik) -->
+                        <!-- 2. Modal Popup Jendela macOS -->
                         <div id="modal-{{ project.id }}" class="modal-overlay" onclick="closeModalOnOuterClick(event)">
                             <article class="experience-card window-card modal-content">
                                 <div class="window-header">
                                     <span class="dot dot-red" onclick="closeModal('modal-{{ project.id }}')" style="cursor: pointer;"></span>
                                     <span class="dot dot-yellow"></span>
                                     <span class="dot dot-green"></span>
-                                    <span class="window-title">{{ project.role }}</span>
+                                    <span class="window-title">
+                                        {% if project.role %}{{ project.role }}{% else %}{{ project.title }}{% endif %}
+                                    </span>
                                 </div>
                                 <div class="window-content">
                                     {% if project.image_url %}
@@ -59,26 +67,32 @@
                                     <p class="project-tech">
                                         <strong>Tools:</strong> {{ project.tech_stack }}
                                     </p>
+                                    
+                                    <!-- Bagian Tombol Aksi & Delete Modal dari Dosen -->
+                                    <div class="project-card-actions">
+                                        <div class="project-actions">
+                                            {% if project.project_url %}
+                                                <a href="{{ project.project_url }}" class="button" target="_blank" rel="noopener noreferrer">View Project</a>
+                                            {% endif %}
+                                            {% include "components/project_delete_modal.html" with project=project %}
+                                        </div>
+                                    </div>
                                 </div>
                             </article>
                         </div>
                     {% empty %}
-                        <p class="empty-state">
-                            No project has been added yet.
-                        </p>
+                        {% if title_query %}
+                            <p class="empty-state">No projects found with that name.</p>
+                        {% else %}
+                            <p class="empty-state">No project has been added yet.</p>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; 2026 {{ name }}. Fakultas Ilmu Komputer, Universitas Indonesia.</p>
-        </div>
-    </footer>
-
-    <!-- Script JavaScript untuk Membuka & Menutup Modal -->
+    <!-- Script JavaScript untuk Modal Folder -->
     <script>
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
@@ -94,5 +108,4 @@
             }
         }
     </script>
-</body>
-</html>
+{% endblock content %}
