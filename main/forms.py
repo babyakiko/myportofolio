@@ -1,5 +1,53 @@
-from django.forms import ModelForm, TextInput, Textarea, URLInput
-from main.models import Project
+from django.forms import ModelForm, TextInput, Textarea, URLInput, Select, DateTimeInput
+from main.models import Experience, Project
+
+class ExperienceForm(ModelForm):
+    class Meta:
+        model = Experience
+        fields = [
+            "title",
+            "description",
+            "category",
+            "thumbnail",
+            "ended_at",
+        ]
+        labels = {
+            "title": "Experience Title",
+            "description": "Job Description",
+            "category": "Experience Category",
+            "thumbnail": "Thumbnail / Image URL",
+            "ended_at": "End Date (Leave blank if ongoing)",
+        }
+        widgets = {
+            "title": TextInput(
+                attrs={
+                    "placeholder": "e.g.: Software Engineering Intern",
+                    "maxlength": 255,
+                }
+            ),
+            "description": Textarea(
+                attrs={
+                    "placeholder": "Tell us about your responsibilities and achievements...",
+                    "rows": 3,
+                }
+            ),
+            "category": Select(
+                attrs={
+                    "class": "form-control", 
+                }
+            ),
+            "thumbnail": URLInput(
+                attrs={
+                    "placeholder": "https://drive.google.com/thumbnail?id=...&sz=w1000",
+                }
+            ),
+            "ended_at": DateTimeInput(
+                attrs={
+                    "type": "datetime-local",
+                    "class": "form-control",
+                }
+            ),
+        }
 
 class ProjectForm(ModelForm):
     class Meta:

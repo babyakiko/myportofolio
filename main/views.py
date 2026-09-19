@@ -3,15 +3,15 @@ from django.contrib import messages
 from django.core import serializers
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from main.forms import ProjectForm
+from main.forms import ExperienceForm, ProjectForm
 
 from main.models import Experience, Project
 
 
 def show_main(request):
     context = {
-        "surname": "Baby",
-        "name": "Baby Akiko Gracia",
+        "name": "Baby",
+        "full_name": "Baby Akiko Gracia",
         "npm": "2506625224",
         "study_program": "S1 Sistem Informasi",
         "bio": "Second year Information System student at Universitas Indonesia ",
@@ -27,6 +27,33 @@ def show_experience(request):
         "experience_list": Experience.objects.all(),
     }
     return render(request, "experience.html", context)
+
+def create_experience(request):
+    form = ExperienceForm(request.POST or None)
+
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        messages.success(request, "New experience successfully added!")
+        return redirect("main:show_experience")
+
+    context = {
+        "name": "Baby",
+        "form": form,
+    }
+    return render(request, "experience_form.html", context)
+
+def get_experiences_json(request):
+    experiences = Experience.objects.all()
+    experiences_json = serializers.serialize("json", experiences)
+    return HttpResponse(experiences_json, content_type="application/json")
+
+def delete_experience(request, experience_id):
+    experience = get_object_or_404(Experience, pk=experience_id)
+    if request.method == "POST":
+        experience.delete()
+        messages.success(request, "Experience successfully deleted!")
+        return redirect("main:show_experience")
+    return redirect("main:show_experience")
 
 def show_projects(request):
     json_response = get_projects_json(request)
@@ -50,7 +77,7 @@ def create_project(request):
 
     if request.method == "POST" and form.is_valid():
         form.save()
-        messages.success(request, "Proyek baru berhasil ditambahkan!")
+        messages.success(request, "New project successfully added!")
         return redirect("main:show_projects")
 
     context = {
@@ -74,7 +101,7 @@ def delete_project(request, project_id):
 
     if request.method == "POST":
         project.delete()
-        messages.success(request, "Project berhasil dihapus!")
+        messages.success(request, "Project successfully deleted!")
         return redirect("main:show_projects")
 
     return redirect("main:show_projects")
