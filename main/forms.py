@@ -21,7 +21,7 @@ class ExperienceForm(ModelForm):
         widgets = {
             "title": TextInput(
                 attrs={
-                    "placeholder": "e.g.: Software Engineering Intern",
+                    "placeholder": "Software Engineering Intern",
                     "maxlength": 255,
                 }
             ),

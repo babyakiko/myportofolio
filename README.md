@@ -51,5 +51,39 @@ Bagian yang dibantu:
     1. Membantu mengubah desain CSS serta menambahkan elemen hiasan seperti kaomoji.
     2. Membantu membuat fitur pop-up pada section proyek. 
     3. Membantu dalam melakukan perintah Git 
-    4. Membantu menjelaskan dan menyusun jawaban untuk reflective questions.
+    4. Membantu menjelaskan dan menyusun jawaban untuk *reflective questions*.
 Refleksi Pengembangan: AI saya gunakan sepenuhnya sebagai sarana belajar dan pendukung. Setiap baris kode (HTML, CSS, maupun JavaScript) serta konsep yang diberikan selalu saya coba pahami terlebih dahulu. Tujuannya agar saya benar-benar menguasai materi tersebut dan kedepannya mampu membangun serta mengembangkan proyek secara mandiri tanpa ketergantungan penuh pada AI.
+
+### Assignment 3
+
+1. ModelForm vs Manual HTML & Fungsi {% csrf_token %}
+    a. Alasan menggunakan Django ModelForm daripada membuat form HTML secara manual:
+        1. Otomatisasi & Efisiensi: ModelForm secara otomatis membuat struktur *field* form berdasarkan model Django yang telah didefenisikan, sehingga mengurangi kode berulang.
+        2. Validasi Bawaan: Django menangani validasi data secara otomatis sebelum disimpan ke database.
+        3. Kemudahan Penyimpanan: Dengan perintah form.save(), data dari pengguna dapat langsung divalidasi dan disimpan ke database tanpa harus memetakannya satu per satu secara manual.
+    b. Alasan menambahkan {% csrf_token %}: Token ini digunakan untuk melindungi aplikasi dari serangan *Cross-Site Request Forgery* (CSRF). Token yang dibuat oleh server ini memastikan bahwa *request* POST yang dikirim berasal dari halaman web yang sah dan tepercaya.
+
+2. Keunggulan JSON dibandingkan XML dalam Pengembangan Web Modern:
+    a. Lebih Ringan dan Cepat: JSON memiliki sintaks yang lebih bersih dan ukuran *file* yang lebih kecil dibandingkan XML, sehingga mempercepat proses transmisi data melalui jaringan.
+    b. Kompatibilitas Asli dengan JavaScript: Karena berbasis pada objek JavaScript, JSON sangat mudah dan cepat untuk diurai langsung oleh peramban web.
+    c. Keterbacaan: Struktur data JSON menggunakan format *key-value pairs* dan array yang lebih intuitif serta mudah dibaca oleh manusia dibandingkan struktur tag berlapis pada XML.
+
+3. Alur Pengembalian Data Portofolio dalam Format JSON & Pentingnya Serialization
+    a. Alur Penggunaan View Function untuk JSON:
+        1. Klien (seperti peramban atau Postman) mengirimkan *request* ke *endpoint* API (misalnya /api/projects/).
+        2. *View function* (seperti get_projects_json) menerima permintaan tersebut dan mengambil data dari database menggunakan *QuerySet* model Django.
+        3. Data objek model diubah ke dalam bentuk teks JSON menggunakan fungsi serializers.serialize().
+        4. Server mengembalikan data tersebut ke klien menggunakan HttpResponse dengan tipe konten (content_type) berupa application/json.
+    b. Alasan perlu melakukan proses serialization:
+        1. Objek model Django adalah objek Python kompleks yang terhubung langsung ke database dan tidak dapat dikirim secara langsung melalui protokol HTTP.
+        2. Proses *serialization* berfungsi menerjemahkan objek kompleks tersebut menjadi format teks standar (JSON) yang universal, sehingga dapat dibaca dan dipahami oleh berbagai jenis klien di sisi *frontend*.
+
+### AI Disclosure
+
+Dalam pengerjaan portofolio ini, saya menggunakan bantuan AI sebagai sarana pembelajaran, teman diskusi, dan alat bantu *debugging*.
+
+Alat yang digunakan: Gemini
+Bagian yang dibantu: 
+    1. Membantu *debugging* error Django (seperti `NoReverseMatch`) dan mengimplementasikan fitur CRUD (*form*, *view*, *URL routing*, dan *template*) untuk section *Experience*.
+    2. Membantu menjelaskan dan menyusun jawaban untuk *reflective questions*.
+Refleksi Pengembangan: Melalui pengerjaan tugas ini, saya mulai memahami alur dasar pengelolaan data dan pembuatan *form* di Django. Meskipun saat ini masih memerlukan bantuan untuk mengatasi kendala dan menyusun kodenya, saya berharap ke depannya saya dapat terus belajar, semakin memahami alur kerja pengembangan web secara utuh, dan mampu mengerjakannya secara mandiri tanpa ketergantungan pada AI.
