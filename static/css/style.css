@@ -471,11 +471,10 @@ h1, .brand {
     border-top: 1px solid var(--line);
 }
 
-.project-actions {
+.project-actions, .experience-actions {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    flex-wrap: wrap;
 }
 
 /* projects form & inputs customization */
@@ -534,10 +533,10 @@ h1, .brand {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: fit-content;
+    height: 38px;
     border: 0;
     border-radius: 20px; 
-    padding: 0.6rem 1.25rem;
+    padding: 0 1.25rem;
     background: var(--accent-blue);
     color: white;
     cursor: pointer;
@@ -545,6 +544,7 @@ h1, .brand {
     font-weight: 600;
     font-size: 0.9rem;
     text-decoration: none;
+    line-height: 1.2;
     transition: transform 0.15s ease, opacity 0.2s ease;
 }
 
@@ -563,6 +563,42 @@ h1, .brand {
     color: white;
 }
 
+.star-form {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin: 0;
+    position: relative;
+    top: -1px;
+}
+
+.button-star {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    background: var(--ink);
+    padding: 0.6rem 1.25rem; 
+    border-radius: 20px;    
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+}
+
+.button-star.is-starred {
+    background: var(--accent-blue);
+}
+
+.star-count {
+    padding: 0.05rem 0.4rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.25);
+    font-size: 0.8rem;
+}
 
 @media (max-width: 600px) {
     .hero-grid {

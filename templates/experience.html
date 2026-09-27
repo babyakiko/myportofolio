@@ -1,9 +1,7 @@
 {% extends "base.html" %}
-
 {% block meta %}
     <title>Experience - {{ name }}</title>
 {% endblock meta %}
-
 {% block content %}
     <main>
         <section class="experience-section" id="experience">
@@ -13,11 +11,13 @@
                 <!-- Header yang berisi Judul dan Tombol Tambah Pengalaman -->
                 <div class="project-header">
                     <h1>Experience</h1>
-                    <a href="{% url 'main:create_experience' %}"
-                       class="button project-add-button">
-                        <span aria-hidden="true">+</span>
-                        Add Experience
-                    </a>
+                    {% if user.is_superuser %}  
+                        <a href="{% url 'main:create_experience' %}"
+                           class="button project-add-button">
+                            <span aria-hidden="true">+</span>
+                            Add Experience
+                        </a>
+                    {% endif %} 
                 </div>
 
                 <!-- Form Pencarian (Search Bar) -->
@@ -66,7 +66,10 @@
                                 <!-- Tombol Aksi (Delete Modal) -->
                                 <div class="project-card-actions" style="margin-top: 1rem;">
                                     <div class="project-actions">
-                                        {% include "components/experience_delete_modal.html" with experience=experience %}
+                                        {% if user.is_superuser %}
+                                            {% include "components/experience_star.html" with experience=experience %}
+                                            {% include "components/experience_delete_modal.html" with experience=experience %}
+                                        {% endif %} 
                                     </div>
                                 </div>
                             </div>
