@@ -87,3 +87,11 @@ Bagian yang dibantu:
     1. Membantu *debugging* error Django (seperti `NoReverseMatch`) dan mengimplementasikan fitur CRUD (*form*, *view*, *URL routing*, dan *template*) untuk section *Experience*.
     2. Membantu menjelaskan dan menyusun jawaban untuk *reflective questions*.
 Refleksi Pengembangan: Melalui pengerjaan tugas ini, saya mulai memahami alur dasar pengelolaan data dan pembuatan *form* di Django. Meskipun saat ini masih memerlukan bantuan untuk mengatasi kendala dan menyusun kodenya, saya berharap ke depannya saya dapat terus belajar, semakin memahami alur kerja pengembangan web secara utuh, dan mampu mengerjakannya secara mandiri tanpa ketergantungan pada AI.
+
+### AI Disclosure Assignment 4
+
+Dalam pengerjaan portofolio ini, saya menggunakan bantuan AI sebagai sarana pembelajaran dan alat bantu *debugging*.
+
+Alat yang digunakan: Gemini
+Bagian yang dibantu: Melakukan *debugging* dan penyesuaian tampilan CSS/layout saat posisi *button* tidak sejajar, serta memahami cara perbaikannya.
+Refleksi Pengembangan: Proses *debugging* ini membantu saya memahami cara kerja perataan elemen (*alignment*) pada tampilan web. Ke depannya, saya berharap dapat menyelesaikan masalah tata letak antarmuka secara mandiri tanpa bergantung pada AI.
