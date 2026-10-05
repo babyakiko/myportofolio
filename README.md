@@ -95,3 +95,24 @@ Dalam pengerjaan portofolio ini, saya menggunakan bantuan AI sebagai sarana pemb
 Alat yang digunakan: Gemini
 Bagian yang dibantu: Melakukan *debugging* dan penyesuaian tampilan CSS/layout saat posisi *button* tidak sejajar, serta memahami cara perbaikannya.
 Refleksi Pengembangan: Proses *debugging* ini membantu saya memahami cara kerja perataan elemen (*alignment*) pada tampilan web. Ke depannya, saya berharap dapat menyelesaikan masalah tata letak antarmuka secara mandiri tanpa bergantung pada AI.
+
+### Assignment 5
+
+1. *Debouncing* adalah teknik "menunda proses sampai pengguna selesai mengetik". Alasan kenapa *debouncing* penting saat menggunakan AJAX, karena tanpa *debouncing* setiap huruf yang kita ketik akan langsung terkirim  ke server, hal ini akan memberatkan server.  
+
+2. fetch() adalah perintah untuk mengambil data dari internet, dan proses ini butuh waktu (asinkron). Kata kunci await bertugas meminta program untuk sabar menunggu sampai proses pengambilan data itu benar-benar selesai sebelum lanjut ke baris kode berikutnya. Jika kita tidak menggunakan await, JavaScript tidak akan menunggu dan program akan langsung meloncat ke baris berikutnya padahal datanya belum selesai didownload, sehingga menyebabkan *error*.
+
+3. XSS (Cross-Site Scripting) adalah jenis kejahatan siber di mana peretas menyisipkan kode jahat (biasanya bahasa JavaScript) ke dalam situs web. Jika kode itu berhasil berjalan di HP/laptop pengunjung, peretas bisa mencuri akun, session cookie, atau data pribadi korban.
+Alasan kenapa AJAX lebih rentan ketimbang Django Template:
+    a. Django Template Punya "Satpam Otomatis" (Auto-escaping): Saat kita menampilkan data di Django pakai kode {{ data }}, Django secara otomatis menetralkan karakter berbahaya.
+    b. AJAX / JavaScript Sering Dipakai dengan "Pintu Terbuka": Ketika mengambil data lewat AJAX dan menampilkannya memakai JavaScript (misalnya pakai perintah innerHTML), JavaScript secara default menganggap teks tersebut sebagai kode HTML/JS yang boleh langsung dijalankan tanpa disaring terlebih dahulu.
+
+### AI Disclosure
+
+Dalam pengerjaan portofolio ini, saya menggunakan bantuan AI sebagai sarana pembelajaran, teman diskusi, dan alat bantu *debugging*.
+
+Alat yang digunakan: Gemini
+Bagian yang dibantu: 
+    1. Membantu menyelesaikan kendala saat terjadi *error* atau *typo* pada kode
+    2. Membantu menjelaskan dan menyusun jawaban untuk *reflective questions*.
+Refleksi Pengembangan: AI saya gunakan untuk mempercepat proses *troubleshooting* dan membantu saya untuk memahami konsep *asynchronous JavaScript* serta keamanan web. Ke depannya, saya berharap dapat menerapkan konsep-konsep dasar ini secara konsisten tanpa bergantung pada AI, serta dapat membangun fitur web yang lebih kompleks dan aman.
