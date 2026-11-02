@@ -56,7 +56,13 @@
                 </div>
 
                 <!-- Experience Grid (Akan diisi secara dinamis oleh JavaScript) -->
-                <div id="grid" class="experience-grid hide"></div>
+                <div id="grid" class="experience-grid {% if not experiences %}hide{% endif %}">
+                    {% for experience in experiences %}
+                        <article class="experience-card window-card">
+                            <h2>{{ experience.title }}</h2>
+                        </article>
+                    {% endfor %}
+                </div>
             </div>
         </section>
     </main>
