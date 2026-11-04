@@ -5,7 +5,7 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIClient, APITestCase
 
-from main.models import Project
+from main.models import Project, Experience
 
 
 class ProjectAPITest(APITestCase):
@@ -158,3 +158,53 @@ class ProjectAPITest(APITestCase):
         # editor DITOLAK saat mencoba menghapus data (DELETE -> 403 Forbidden)
         response = self.client.delete(self.detail_url)
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+
+class ExperienceApiTests(APITestCase):
+    def setUp(self):
+        # Buat user biasa dan superuser untuk pengujian hak akses
+        self.user = User.objects.create_user(username="testuser", password="password123")
+        self.superuser = User.objects.create_superuser(username="adminuser", password="password123")
+        
+        # Buat contoh data experience awal
+        self.experience = Experience.objects.create(
+            title="Software Engineer Intern",
+            description="Developing backend services using Django",
+            category="internship"
+        )
+        self.list_url = reverse("api:experience-list")
+        self.detail_url = reverse("api:experience-detail", kwargs={"experience_id": self.experience.id})
+        self.star_url = reverse("api:experience-star", kwargs={"experience_id": self.experience.id})
+
+    def test_get_experiences_unauthenticated(self):
+        response = self.client.get(self.list_url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 1)
+
+    def test_create_experience_as_superuser(self):
+        self.client.login(username="adminuser", password="password123")
+        data = {
+            "title": "Research Assistant",
+            "description": "Machine learning research assistant",
+            "category": "research"
+        }
+        response = self.client.post(self.list_url, data, format="json")
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(Experience.objects.count(), 2)
+
+    def test_create_experience_as_normal_user_forbidden(self):
+        self.client.login(username="testuser", password="password123")
+        data = {
+            "title": "Unauthorized Exp",
+            "description": "Should fail",
+            "category": "full-time"
+        }
+        response = self.client.post(self.list_url, data, format="json")
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_star_experience_as_logged_in_user(self):
+        self.client.login(username="testuser", password="password123")
+        response = self.client.post(self.star_url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.experience.refresh_from_db()
+        self.assertIn(self.user, self.experience.starred_by.all())
