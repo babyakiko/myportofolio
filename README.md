@@ -116,3 +116,35 @@ Bagian yang dibantu:
     1. Membantu menyelesaikan kendala saat terjadi *error* atau *typo* pada kode
     2. Membantu menjelaskan dan menyusun jawaban untuk *reflective questions*.
 Refleksi Pengembangan: AI saya gunakan untuk mempercepat proses *troubleshooting* dan membantu saya untuk memahami konsep *asynchronous JavaScript* serta keamanan web. Ke depannya, saya berharap dapat menerapkan konsep-konsep dasar ini secara konsisten tanpa bergantung pada AI, serta dapat membangun fitur web yang lebih kompleks dan aman.
+
+### Assignment 6
+
+1. REST, JSON, & PUT vs PATCH
+    a. REST & JSON: JSON adalah teks datanya. Kalau kita bikin web hanya menggunakan JSON, belum tentu RESTful. Web dibilang RESTful kalau aturannya benar (pakai URL seperti /users dan pakai tombol HTTP yang  sesuai seperti GET/POST). 
+    b. PUT vs PATCH:
+        1. PUT: Ganti total (timpa semua data dari awal). Kalau ada data yang lupa dikirim, data lama bisa hilang/terhapus
+        2. PATCH: Edit sebagian (cuma ubah kolom yang dikirim saja, data lain yang tidak disentuh tetap aman).
+
+2. Serializer di DRF
+    a. Fungsi: Menerjemahkan data dari Database ke JSON (dan sebaliknya), sekaligus otomatis ngecek apakah data yang dikirim valid (misal: format email benar atau tidak).
+    b. Keuntungannya dibandingkan merakit dictionary secara manual: Karena otomatis, kita tidak perlu ngetik kode satu per satu, dan pengecekan errornya sudah disiapkan dari sana.
+
+3. Otentikasi & Otorisasi
+    a. Otentikasi: Proses login pakai username/password.
+    b. Otorisasi: Cek hak akses, misal: cuma Admin yang boleh hapus data.
+    c. Alasan kenapa hak akses harus diperiksa di Server: Karena nyembunyiin tombol di layar itu gampang dibobol (hacker bisa nembak langsung lewat aplikasi luar). Satpam keamanan yang asli wajib ada di server.
+
+4. CSRF Token & force_authenticate
+    a. Kenapa kita butuh CSRF? agar situs lain gak bisa nyuri sesi login kita buat ngejalanin perintah jahat secara diam-diam.
+    b. Kenapa force_authenticate belum cukup buat ngetes? Karena fitur itu seperti "pintu belakang" yang sengaja mematikan sistem pengecekan CSRF. Jadi, sukses pakai force_authenticate bukan berarti perlindungan CSRF web sudah aman.
+
+### AI Disclosure
+
+Dalam pengerjaan portofolio ini, saya menggunakan bantuan AI sebagai sarana pembelajaran, teman diskusi, dan alat bantu *debugging*.
+
+Alat yang digunakan: Gemini
+Bagian yang dibantu: 
+    1. Membantu menyelesaikan kendala saat terjadi *error* atau *typo* pada kode
+    2. Membantu menjelaskan dan menyusun jawaban untuk *reflective questions*.
+    3. Membantu memahami konsep pengembangan API, RESTful, dan keamanan web (seperti otorisasi & proteksi CSRF).
+Refleksi Pengembangan: AI saya gunakan untuk mempercepat proses *troubleshooting* dan membantu saya untuk memahami konsep teknis yang rumit. Ke depannya, saya ingin terus melatih kemandirian dalam merancang sistem yang aman dan membangun fitur web yang lebih kompleks tanpa terlalu bergantung pada AI.
