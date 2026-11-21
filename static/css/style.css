@@ -12,17 +12,18 @@
     --accent-dark: #6e6e73;
     --line: #e5e5ea;
     --text-muted: #515154;
-    --radius: 12px;
+    --radius: 14px;
     --dot-color: #d1d1d6;
 }
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
     color: var(--ink);
     background-color: var(--paper);
     background-image: radial-gradient(#e2e2e7 1px, transparent 1px);
     background-size: 32px 32px;
-    line-height: 1.6;
+    line-height: 1.65;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -38,14 +39,14 @@ h1, .brand {
 }
 
 .container {
-    max-width: 960px;
+    max-width: 1160px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
 }
 
 /* Header & Navigasi Style macOS Bar */
 .site-header {
-    background: rgba(248, 249, 250, 0.85);
+    background: rgba(248, 249, 250, 0.88);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
     position: sticky;
@@ -57,11 +58,11 @@ h1, .brand {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 1.1rem 2rem;
 }
 
 .brand {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--ink);
     text-decoration: none;
@@ -69,13 +70,13 @@ h1, .brand {
 
 .site-header nav {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .site-header nav a {
     color: var(--text-muted);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 500;
     transition: color 0.2s;
 }
@@ -95,16 +96,16 @@ h1, .brand {
 
 .window-header {
     background: #f1f1f3;
-    padding: 8px 12px;
+    padding: 10px 14px;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
     border-bottom: 1px solid var(--line);
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
     display: inline-block;
 }
@@ -114,37 +115,37 @@ h1, .brand {
 .dot-green { background-color: #27c93f; border: 0.5px solid #1aab29; }
 
 .window-title {
-    font-size: 0.75rem;
+    font-size: 0.82rem;
     color: var(--accent-dark);
     margin-left: 6px;
     font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", monospace;
 }
 
 .window-content {
-    padding: 1.25rem;
+    padding: 1.5rem;
 }
 
 /* Hero Section */
 .hero {
-    padding: 4.5rem 0 5rem;
+    padding: 5rem 0 5.5rem;
     position: relative;
 }
 
 .hero-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
+    grid-template-columns: 1.25fr 1fr;
     grid-template-areas:
         "identity photo"
         "details  photo";
-    gap: 1.5rem 3rem;
-    align-items: start;
+    gap: 1.5rem 3.5rem;
+    align-items: center;
 }
 
 .hero-identity { grid-area: identity; }
 .hero-details { grid-area: details; }
 
 .hero-kicker {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--accent-blue);
@@ -153,25 +154,27 @@ h1, .brand {
 }
 
 .hero-identity h1 {
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-size: clamp(3rem, 5vw, 4.75rem);
     line-height: 1.05;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .bio {
     color: var(--text-muted);
-    max-width: 480px;
-    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    max-width: 540px;
+    margin-bottom: 1.75rem;
 }
 
 .meta-list {
     display: flex;
-    gap: 2rem;
-    margin-bottom: 1.5rem;
+    gap: 2.5rem;
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap;
 }
 
 .meta-row dt {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--accent-dark);
@@ -179,23 +182,24 @@ h1, .brand {
 }
 
 .meta-row dd {
+    font-size: 1rem;
     font-weight: 500;
 }
 
 .social-links {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.85rem;
     flex-wrap: wrap;
 }
 
 .social-link {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-weight: 600;
     text-decoration: none;
     color: #ffffff;
     background-color: var(--accent-blue);
     border-radius: 20px;
-    padding: 0.5rem 1.2rem;
+    padding: 0.6rem 1.35rem;
     transition: transform 0.15s ease, opacity 0.2s ease;
 }
 
@@ -220,13 +224,13 @@ h1, .brand {
     aspect-ratio: 4 / 3;
     object-fit: cover;
     object-position: center 85%;
-    transform: scale(1.5);
+    transform: scale(1.15);
 }
 
 /* Styling Kaomoji */
 .kaomoji {
     font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", monospace;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--accent-dark);
     position: absolute;
     user-select: none;
@@ -239,45 +243,45 @@ h1, .brand {
     transform: scale(1.2);
 }
 
-.kaomoji-1 { top: 15%; left: 8%; }
-.kaomoji-2 { top: 75%; left: 3%; }
-.kaomoji-3 { top: 50%; right: 5%; }
+.kaomoji-1 { top: 24px; left: 24px; } 
+.kaomoji-2 { bottom: 24px; left: 24px; } 
+.kaomoji-3 { top: 24px; right: 24px; }
 
 /* Experience Section */
 .experience-section {
-    padding: 4rem 0;
+    padding: 4.5rem 0;
 }
 
 .section-kicker {
     color: var(--accent-blue);
-    font-size: 0.8rem;
+    font-size: 0.88rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
-.experience-section h1 {
+.experience-section h1,
+.project-header h1 {
     margin: 0.4rem 0 2rem;
     font-size: 2.2rem;
 }
 
 .experience-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.75rem;
     padding: 1rem 0;
 }
 
 .experience-card h2 {
     margin: 0.25rem 0 0.75rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 .experience-description,
 .empty-state {
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 
 .experience-status {
@@ -309,11 +313,6 @@ h1, .brand {
     gap: 1rem;
 }
 
-.project-header h1 {
-    margin: 0;
-    font-size: 2.2rem;
-}
-
 .project-add-button span {
     font-size: 1.1rem;
     font-weight: bold;
@@ -328,7 +327,7 @@ h1, .brand {
 
 .project-image {
     width: 100%;
-    height: 380px;
+    height: 420px;
     object-fit: contain;
     display: block;
 }
@@ -367,6 +366,15 @@ h1, .brand {
     box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
 }
 
+.project-grid,
+.folder-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: flex-start;
+    gap: 1.25rem 1.75rem; 
+}
+
 /* Card Actions */
 .project-card-actions {
     margin-top: 1.5rem;
@@ -388,7 +396,8 @@ h1, .brand {
     gap: 8px;
     cursor: pointer;
     padding: 12px;
-    width: 130px;
+    width: 140px;
+    flex: 0 0 130px;
     text-align: center;
     transition: transform 0.2s ease;
 }
@@ -398,7 +407,7 @@ h1, .brand {
 }
 
 .folder-title {
-    font-size: 0.7rem;
+    font-size: 0.82rem;
     font-weight: 500;
     color: #1f2937;
     background-color: rgba(255, 255, 255, 0.8);
@@ -742,7 +751,19 @@ h1, .brand {
     display: none !important;
 }
 
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
 @media (max-width: 600px) {
+    .container,
+    .site-header .container { 
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
     .hero-grid {
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -752,11 +773,15 @@ h1, .brand {
     }
 
     .hero-photo {
-        max-width: 280px;
+        max-width: 300px;
     }
 
     .kaomoji {
         display: none;
+    }
+
+    .project-image { 
+        height: 240px;
     }
 
     .form-row {
