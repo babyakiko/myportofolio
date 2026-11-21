@@ -112,19 +112,19 @@ def get_projects_json(request):
     # Manually build the JSON data so we can add the Star logic
     data = []
     for project in projects:
-        starred_users = project.starred_by.all()
-        is_starred = request.user in starred_users if request.user.is_authenticated else False
-        starred_by_names = ", ".join([u.username for u in starred_users])
+        starred_users = list(project.starred_by.all())
+        is_starred = request.user.is_authenticated and request.user in starred_users
+        starred_by_names = ", ".join([u.username for u in starred_users if getattr(u, "username", None)])
 
         data.append({
-            "pk": str(project.id),
+            "pk": str(project.pk),
             "fields": {
                 "title": project.title,
                 "role": getattr(project, 'role', ''),  
                 "description": project.description,
-                "tech_stack": project.tech_stack,
+                "tech_stack": getattr(project, "tech_stack", ""),
                 "image_url": getattr(project, 'image_url', getattr(project, 'project_image_url', '')), 
-                "star_count": starred_users.count(),
+                "star_count": len(starred_users),
                 "is_starred": is_starred,
                 "starred_by_names": starred_by_names,
             }
